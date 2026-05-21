@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 
 export default function TechStack() {
+  const revealViewport = { once: true, amount: 0.12 };
+
   const coreTech = [
     { name: "Next.js", category: "Framework", desc: "React Framework for production" },
     { name: "React", category: "Library", desc: "Component-based UI development" },
@@ -58,7 +60,7 @@ export default function TechStack() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={revealViewport}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-neutral-900 bg-neutral-950/20"
         >
           {coreTech.map((tech, index) => (

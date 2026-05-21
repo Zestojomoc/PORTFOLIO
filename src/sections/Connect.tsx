@@ -40,6 +40,9 @@ const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export default function Connect() {
+  const revealViewport = { once: true, amount: 0.12 };
+  const cardViewport = { once: true, amount: 0.08 };
+
   const contacts = [
     {
       label: "Email",
@@ -94,7 +97,7 @@ export default function Connect() {
               <motion.h3
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={revealViewport}
                 variants={textVariants}
                 className="max-w-[12ch] text-3xl sm:text-6xl font-display font-extrabold uppercase tracking-tight text-white leading-[0.95] mb-6 sm:mb-8"
               >
@@ -127,7 +130,7 @@ export default function Connect() {
                   rel={contact.label !== "Contact Number" && contact.label !== "Email" ? "noopener noreferrer" : undefined}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  viewport={cardViewport}
                   className="group block p-4 sm:p-6 border border-neutral-900 bg-neutral-950/40 hover:border-white transition-all duration-500 rounded-sm hover-target"
                 >
                   <div className="flex items-center justify-between gap-4">

@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 
 export default function WhoAmI() {
+  const revealViewport = { once: true, amount: 0.12 };
+
   const textVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -33,7 +35,7 @@ export default function WhoAmI() {
           <motion.h2
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={revealViewport}
             variants={textVariants}
             className="text-xs uppercase tracking-[0.3em] text-neutral-500 font-mono mb-4"
           >
@@ -42,7 +44,7 @@ export default function WhoAmI() {
           <motion.h3
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={revealViewport}
             variants={textVariants}
             className="text-3xl sm:text-5xl font-display font-bold tracking-tight text-white leading-tight"
           >
@@ -53,7 +55,7 @@ export default function WhoAmI() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={revealViewport}
             variants={lineVariants}
             className="h-[1px] bg-neutral-800 mt-8 w-full"
           />
@@ -65,7 +67,7 @@ export default function WhoAmI() {
           <motion.p
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={revealViewport}
             variants={textVariants}
             className="text-lg sm:text-2xl md:text-3xl font-sans font-light leading-relaxed text-neutral-200 tracking-wide"
           >
@@ -77,7 +79,7 @@ export default function WhoAmI() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={revealViewport}
               variants={textVariants}
               className="space-y-4"
             >
@@ -92,7 +94,7 @@ export default function WhoAmI() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={revealViewport}
               variants={textVariants}
               className="space-y-4"
             >
@@ -109,7 +111,7 @@ export default function WhoAmI() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={revealViewport}
             variants={textVariants}
             className="pt-6 border-t border-neutral-900"
           >

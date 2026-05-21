@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 
 export default function Skills() {
+  const revealViewport = { once: true, amount: 0.12 };
+
   const skills = [
     "Responsive Web Design",
     "Frontend Development",
@@ -56,7 +58,7 @@ export default function Skills() {
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={revealViewport}
               className="flex flex-wrap gap-3"
             >
               {skills.map((skill) => (

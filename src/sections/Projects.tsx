@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 export default function Projects() {
+  const revealViewport = { once: true, amount: 0.12 };
+
   const projects = [
     {
       name: "SHM",
@@ -80,7 +82,7 @@ export default function Projects() {
                   <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={revealViewport}
                     transition={{ duration: 0.8, ease: "easeOut" as const }}
                     className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-neutral-950 border border-neutral-900 group overflow-hidden rounded-sm hover-target"
                   >
@@ -99,7 +101,7 @@ export default function Projects() {
                 <motion.div
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={revealViewport}
                   variants={textVariants}
                   className={`lg:col-span-5 flex flex-col justify-center order-2 ${
                     isEven ? "lg:order-2" : "lg:order-1"
