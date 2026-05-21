@@ -77,14 +77,14 @@ export default function Connect() {
   };
 
   return (
-    <section id="connect" className="relative w-full py-24 md:py-36 bg-[#050505] border-t border-neutral-900 overflow-hidden">
+    <section id="connect" className="relative w-full py-20 md:py-36 bg-[#050505] border-t border-neutral-900 overflow-hidden">
       {/* Decorative Index Label */}
       <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         06 / INQUIRIES
       </div>
 
       <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] gap-12 lg:gap-16 xl:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] gap-10 md:gap-12 lg:gap-16 xl:gap-20 items-start">
           {/* Left Column: Heading Statement */}
           <div className="min-w-0 flex flex-col justify-between">
             <div>
@@ -104,7 +104,7 @@ export default function Connect() {
                 <br />
                 <span className="text-stroke-white text-stroke-white-hover">remarkable.</span>
               </motion.h3>
-              <p className="text-sm text-neutral-400 max-w-md font-light leading-relaxed mb-6">
+              <p className="text-sm text-neutral-400 max-w-md font-light leading-relaxed mb-4 sm:mb-6">
                 Have a project in mind, looking to hire a full stack web developer, or simply want to chat about development systems? Get in touch and let&apos;s start the discussion.
               </p>
             </div>

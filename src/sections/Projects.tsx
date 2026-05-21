@@ -42,7 +42,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="relative w-full py-24 md:py-32 bg-black border-t border-neutral-900 overflow-hidden">
+    <section id="projects" className="relative w-full py-20 md:py-32 bg-black border-t border-neutral-900 overflow-hidden">
       {/* Decorative Index Label */}
       <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         05 / WORK
@@ -50,7 +50,7 @@ export default function Projects() {
 
       <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 relative">
         {/* Section Header */}
-        <div className="mb-20">
+        <div className="mb-12 md:mb-20">
           <span className="text-xs uppercase tracking-[0.3em] text-neutral-500 font-mono mb-2 block">
             Selected Creation
           </span>
@@ -60,7 +60,7 @@ export default function Projects() {
         </div>
 
         {/* Projects List */}
-        <div className="space-y-32 md:space-y-48">
+        <div className="space-y-20 md:space-y-48">
           {projects.map((project, idx) => {
             const isEven = idx % 2 === 0;
             const normalizedLink = project.link.trim();
@@ -123,7 +123,7 @@ export default function Projects() {
                     </a>
                   </h4>
 
-                  <p className="text-neutral-400 text-sm md:text-base font-light leading-relaxed mb-8">
+                  <p className="text-neutral-400 text-sm md:text-base font-light leading-relaxed mb-6 md:mb-8">
                     {project.desc}
                   </p>
 
