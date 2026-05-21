@@ -50,7 +50,7 @@ export default function Connect() {
     {
       label: "Facebook",
       value: "Ronnel P. Jomoc Jr.",
-      href: "https://www.facebook.com/ronnel.polsotin.jomoc",
+      href: "https://www.facebook.com",
       icon: Facebook,
     },
     {
