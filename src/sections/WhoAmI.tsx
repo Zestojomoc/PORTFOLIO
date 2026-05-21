@@ -23,7 +23,7 @@ export default function WhoAmI() {
   return (
     <section id="who" className="relative w-full py-24 md:py-32 bg-black border-t border-neutral-900 overflow-hidden">
       {/* Decorative Index Label */}
-      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none">
+      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         01 / IDENTITY
       </div>
 
@@ -44,7 +44,7 @@ export default function WhoAmI() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={textVariants}
-            className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-white leading-tight"
+            className="text-3xl sm:text-5xl font-display font-bold tracking-tight text-white leading-tight"
           >
             Crafting Digital
             <br />
@@ -67,7 +67,7 @@ export default function WhoAmI() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={textVariants}
-            className="text-xl sm:text-2xl md:text-3xl font-sans font-light leading-relaxed text-neutral-200 tracking-wide"
+            className="text-lg sm:text-2xl md:text-3xl font-sans font-light leading-relaxed text-neutral-200 tracking-wide"
           >
             I&apos;m a full stack web developer based in the Philippines. I build clean, responsive, and easy-to-use web applications for people, businesses, and projects.
           </motion.p>

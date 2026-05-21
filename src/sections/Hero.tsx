@@ -34,43 +34,37 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center pt-24 pb-16 overflow-hidden bg-black">
+    <section className="relative min-h-screen w-full flex items-center justify-center pt-28 pb-12 md:pt-24 md:pb-16 overflow-hidden bg-black">
       {/* Background Grid Lines aligned with content max-width */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-20 max-w-7xl 2xl:max-w-[1400px] mx-auto px-6 md:px-12">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-10 md:opacity-20 max-w-7xl 2xl:max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="relative w-full h-full">
-          <div className="absolute left-1/4 top-0 w-[1px] h-full bg-neutral-900" />
-          <div className="absolute left-2/4 top-0 w-[1px] h-full bg-neutral-900" />
-          <div className="absolute left-3/4 top-0 w-[1px] h-full bg-neutral-900" />
+          <div className="absolute left-1/2 top-0 w-[1px] h-full -translate-x-1/2 bg-neutral-900 md:left-1/4 md:translate-x-0" />
+          <div className="absolute hidden md:block left-2/4 top-0 w-[1px] h-full bg-neutral-900" />
+          <div className="absolute hidden md:block left-3/4 top-0 w-[1px] h-full bg-neutral-900" />
         </div>
       </div>
 
-      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10 relative">
+      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12 items-center z-10 relative">
         {/* Info Column */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="lg:col-span-8 flex flex-col justify-center space-y-8 text-left order-2 lg:order-1"
+          className="lg:col-span-8 flex flex-col justify-center space-y-6 md:space-y-8 text-left order-2 lg:order-1"
         >
           <div className="space-y-4">
-            <motion.span
-              variants={itemVariants}
-              className="text-xs uppercase tracking-[0.3em] text-neutral-500 font-mono"
-            >
-              
-            </motion.span>
             <motion.h1
               variants={itemVariants}
-              className="text-[8.5vw] sm:text-6xl md:text-7xl xl:text-[5.5rem] font-display font-extrabold tracking-tighter leading-[0.9] text-white"
+              className="text-[3.8rem] sm:text-6xl md:text-7xl xl:text-[5.5rem] font-display font-extrabold tracking-tighter leading-[0.9] text-white"
             >
-              <span className="block whitespace-nowrap">Ronnel P.</span>
-              <span className="block whitespace-nowrap text-stroke-white text-stroke-white-hover transition-colors duration-500">
+              <span className="block">Ronnel P.</span>
+              <span className="block text-stroke-white text-stroke-white-hover transition-colors duration-500">
                 Jomoc Jr.
               </span>
             </motion.h1>
             <motion.h2
               variants={itemVariants}
-              className="text-lg md:text-2xl font-sans font-light tracking-wide text-neutral-300"
+              className="text-base sm:text-lg md:text-2xl font-sans font-light tracking-wide text-neutral-300"
             >
               Full Stack Web Developer
             </motion.h2>
@@ -83,11 +77,11 @@ export default function Hero() {
             Building clean, responsive, and modern web experiences with a focus on simple design and reliable functionality.
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-2">
-            <Button variant="solid" onClick={() => scrollToSection("projects")}>
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
+            <Button variant="solid" onClick={() => scrollToSection("projects")} className="w-full sm:w-auto">
               View Projects
             </Button>
-            <Button variant="outline" onClick={() => scrollToSection("connect")}>
+            <Button variant="outline" onClick={() => scrollToSection("connect")} className="w-full sm:w-auto">
               Let&apos;s Connect
             </Button>
           </motion.div>
@@ -101,7 +95,7 @@ export default function Hero() {
           className="lg:col-span-4 flex justify-center lg:justify-end order-1 lg:order-2"
         >
           {/* Wrapper to align image and its background offset border */}
-          <div className="relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] aspect-[3/4]">
+          <div className="relative w-full max-w-[220px] sm:max-w-[340px] md:max-w-[380px] aspect-[3/4]">
             {/* Overlapping Background Container */}
             <div className="absolute inset-0 border border-neutral-900 translate-x-4 translate-y-4 z-0 pointer-events-none rounded-sm hidden sm:block" />
 
@@ -113,7 +107,7 @@ export default function Hero() {
                 fill
                 priority
                 className="object-cover object-top filter grayscale contrast-115 hover:grayscale-0 transition-all duration-700 ease-in-out hover:scale-105"
-                sizes="(max-width: 768px) 280px, (max-width: 1024px) 340px, 380px"
+                sizes="(max-width: 640px) 220px, (max-width: 768px) 280px, (max-width: 1024px) 340px, 380px"
               />
             </div>
           </div>

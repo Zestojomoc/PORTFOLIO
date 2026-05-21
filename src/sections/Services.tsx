@@ -31,7 +31,7 @@ export default function Services() {
   return (
     <section id="services" className="relative w-full py-24 md:py-32 bg-[#050505] border-t border-neutral-900 overflow-hidden">
       {/* Decorative Index Label */}
-      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none">
+      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         03 / OFFERINGS
       </div>
 
@@ -59,7 +59,7 @@ export default function Services() {
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
                 layout
-                className={`relative p-8 md:p-10 border transition-all duration-500 cursor-default rounded-sm flex flex-col justify-between min-h-[380px] bg-neutral-950/20 ${
+                className={`relative p-6 sm:p-8 md:p-10 border transition-all duration-500 cursor-default rounded-sm flex flex-col justify-between min-h-[320px] sm:min-h-[380px] bg-neutral-950/20 ${
                   isHovered
                     ? "border-white"
                     : isAnyHovered
@@ -81,7 +81,7 @@ export default function Services() {
                     <span className="text-xs font-mono text-neutral-700">{service.index}</span>
                   </div>
 
-                  <h4 className="text-xl md:text-2xl font-display font-bold text-white mb-6 leading-tight">
+                  <h4 className="text-xl md:text-2xl font-display font-bold text-white mb-4 sm:mb-6 leading-tight">
                     {service.title}
                   </h4>
 

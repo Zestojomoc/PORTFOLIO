@@ -79,7 +79,7 @@ export default function Connect() {
   return (
     <section id="connect" className="relative w-full py-24 md:py-36 bg-[#050505] border-t border-neutral-900 overflow-hidden">
       {/* Decorative Index Label */}
-      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none">
+      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         06 / INQUIRIES
       </div>
 
@@ -96,7 +96,7 @@ export default function Connect() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={textVariants}
-                className="max-w-[12ch] text-4xl sm:text-6xl font-display font-extrabold uppercase tracking-tight text-white leading-[0.95] mb-8"
+                className="max-w-[12ch] text-3xl sm:text-6xl font-display font-extrabold uppercase tracking-tight text-white leading-[0.95] mb-6 sm:mb-8"
               >
                 Let&apos;s build
                 <br />
@@ -128,18 +128,18 @@ export default function Connect() {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="group block p-6 border border-neutral-900 bg-neutral-950/40 hover:border-white transition-all duration-500 rounded-sm hover-target"
+                  className="group block p-4 sm:p-6 border border-neutral-900 bg-neutral-950/40 hover:border-white transition-all duration-500 rounded-sm hover-target"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center space-x-3 sm:space-x-4 min-w-0">
                       <div className="p-2 border border-neutral-900 bg-black group-hover:border-neutral-800 transition-colors duration-300 rounded-sm">
                         <Icon size={16} className="text-neutral-500 group-hover:text-white transition-colors duration-300" />
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase block mb-0.5">
                           {contact.label}
                         </span>
-                        <span className="text-sm sm:text-base font-sans text-white group-hover:text-neutral-300 transition-colors duration-300">
+                        <span className="text-sm sm:text-base font-sans text-white group-hover:text-neutral-300 transition-colors duration-300 break-words">
                           {contact.value}
                         </span>
                       </div>

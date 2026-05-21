@@ -15,7 +15,7 @@ export default function Footer() {
         </div>
 
         {/* Right column */}
-        <div className="flex items-center space-x-6 text-xs text-neutral-500 font-mono">
+        <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-4 gap-y-2 text-xs text-neutral-500 font-mono">
           <a
             href="#who"
             className="hover:text-white transition-colors duration-300 hover-target"

@@ -19,7 +19,7 @@ export default function Projects() {
       type: "College Event Management System",
       desc: "College Event Management System (CEMS), a web-based system designed to help schools manage college events in a faster, easier, and more organized way.",
       image: "/CEMSImaged.png",
-      link: " https://github.com/Zestojomoc/CEMS-.git ",
+      link: " https://github.com/Zestojomoc/CEMS-.git",
       index: "02",
     },
     {
@@ -44,7 +44,7 @@ export default function Projects() {
   return (
     <section id="projects" className="relative w-full py-24 md:py-32 bg-black border-t border-neutral-900 overflow-hidden">
       {/* Decorative Index Label */}
-      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none">
+      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         05 / WORK
       </div>
 
@@ -63,11 +63,13 @@ export default function Projects() {
         <div className="space-y-32 md:space-y-48">
           {projects.map((project, idx) => {
             const isEven = idx % 2 === 0;
+            const normalizedLink = project.link.trim();
+            const isExternal = normalizedLink.startsWith("http");
 
             return (
               <div
                 key={project.name}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16 items-center"
               >
                 {/* Image Showcase Container */}
                 <div
@@ -80,7 +82,7 @@ export default function Projects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8, ease: "easeOut" as const }}
-                    className="relative w-full aspect-[16/10] bg-neutral-950 border border-neutral-900 group overflow-hidden rounded-sm hover-target"
+                    className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-neutral-950 border border-neutral-900 group overflow-hidden rounded-sm hover-target"
                   >
                     <Image
                       src={project.image}
@@ -103,15 +105,20 @@ export default function Projects() {
                     isEven ? "lg:order-2" : "lg:order-1"
                   }`}
                 >
-                  <div className="flex items-center space-x-4 mb-4">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-4">
                     <span className="text-xs font-mono text-neutral-600">{project.index}</span>
                     <span className="text-xs uppercase tracking-widest text-neutral-500 font-mono">
                       {project.type}
                     </span>
                   </div>
 
-                  <h4 className="text-4xl md:text-5xl font-display font-extrabold uppercase tracking-tight text-white mb-6 group">
-                    <a href={project.link} className="hover-target flex items-center gap-2">
+                  <h4 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold uppercase tracking-tight text-white mb-5 sm:mb-6 group">
+                    <a
+                      href={normalizedLink}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="hover-target flex items-center gap-2"
+                    >
                       {project.name}
                     </a>
                   </h4>
@@ -122,7 +129,9 @@ export default function Projects() {
 
                   <div>
                     <a
-                      href={project.link}
+                      href={normalizedLink}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
                       className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-white hover:text-neutral-400 transition-colors duration-300 group hover-target border-b border-white pb-1"
                     >
                       <span>View Project</span>

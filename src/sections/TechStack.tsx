@@ -38,7 +38,7 @@ export default function TechStack() {
   return (
     <section id="stack" className="relative w-full py-24 md:py-32 bg-black border-t border-neutral-900 overflow-hidden">
       {/* Decorative Label */}
-      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none">
+      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         02 / CAPABILITIES
       </div>
 
@@ -65,7 +65,7 @@ export default function TechStack() {
             <motion.div
               key={tech.name}
               variants={cardVariants}
-              className="group relative p-8 border-b border-neutral-900 md:border-r last:border-b-0 md:last:border-r-0 lg:border-r [&:nth-child(3n)]:lg:border-r-0 hover:bg-white hover:text-black transition-colors duration-500 cursor-default"
+                className="group relative p-6 sm:p-8 border-b border-neutral-900 md:border-r last:border-b-0 md:last:border-r-0 lg:border-r [&:nth-child(3n)]:lg:border-r-0 hover:bg-white hover:text-black transition-colors duration-500 cursor-default"
             >
               <div className="flex justify-between items-start mb-6">
                 <span className="text-[10px] font-mono tracking-widest text-neutral-500 group-hover:text-neutral-700 uppercase">
@@ -76,7 +76,7 @@ export default function TechStack() {
                   {index + 1}
                 </span>
               </div>
-              <h4 className="text-xl font-display font-bold tracking-wide mb-2">
+              <h4 className="text-lg sm:text-xl font-display font-bold tracking-wide mb-2">
                 {tech.name}
               </h4>
               <p className="text-xs text-neutral-500 group-hover:text-neutral-800 leading-relaxed font-light">
@@ -97,12 +97,12 @@ export default function TechStack() {
                 Platforms and services I utilize for containerization, code management, and automated continuous deployment.
               </p>
             </div>
-            <div className="lg:col-span-8 flex flex-wrap gap-4 lg:justify-end">
+            <div className="lg:col-span-8 flex flex-wrap gap-3 sm:gap-4 lg:justify-end">
               {tools.map((tool) => (
                 <motion.div
                   key={tool}
                   whileHover={{ scale: 1.05 }}
-                  className="px-6 py-4 border border-neutral-900 bg-neutral-950 text-neutral-300 text-xs font-mono uppercase tracking-widest hover:border-white hover:text-white transition-all duration-300 rounded-sm hover-target"
+                  className="px-4 sm:px-6 py-3 sm:py-4 border border-neutral-900 bg-neutral-950 text-neutral-300 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] sm:tracking-widest hover:border-white hover:text-white transition-all duration-300 rounded-sm hover-target"
                 >
                   {tool}
                 </motion.div>

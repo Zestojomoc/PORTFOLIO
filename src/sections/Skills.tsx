@@ -34,7 +34,7 @@ export default function Skills() {
   return (
     <section className="relative w-full py-20 bg-black border-t border-neutral-900 overflow-hidden">
       {/* Decorative Index Label */}
-      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none">
+      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         04 / COMPETENCIES
       </div>
 
@@ -64,7 +64,7 @@ export default function Skills() {
                   key={skill}
                   variants={tagVariants}
                   whileHover={{ y: -3 }}
-                  className="px-6 py-4 border border-neutral-800 bg-neutral-950/40 text-neutral-300 text-xs sm:text-sm font-mono tracking-wider hover:border-white hover:text-white hover:bg-neutral-950 transition-colors duration-300 rounded-sm hover-target"
+                  className="px-4 sm:px-6 py-3 sm:py-4 border border-neutral-800 bg-neutral-950/40 text-neutral-300 text-[10px] sm:text-sm font-mono tracking-[0.18em] sm:tracking-wider hover:border-white hover:text-white hover:bg-neutral-950 transition-colors duration-300 rounded-sm hover-target"
                 >
                   {skill}
                 </motion.div>

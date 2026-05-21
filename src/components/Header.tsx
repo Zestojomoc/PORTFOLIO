@@ -31,7 +31,7 @@ export default function Header() {
               alt="Ronnel P. Jomoc Jr. icon"
               width={64}
               height={64}
-              className="h-full w-full scale-110 object-contain object-[center_22%] drop-shadow-[0_0_10px_rgba(255,255,255,0.18)]"
+              className="h-12 w-12 md:h-full md:w-full scale-110 object-contain object-[center_22%] drop-shadow-[0_0_10px_rgba(255,255,255,0.18)]"
               unoptimized
               preload
             />
@@ -69,7 +69,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-30 bg-black pt-28 px-6 flex flex-col justify-start space-y-8 md:hidden"
+            className="fixed inset-0 z-30 bg-black/95 backdrop-blur-md pt-24 px-6 flex flex-col justify-start space-y-8 md:hidden overflow-y-auto"
           >
             <nav className="flex flex-col space-y-6">
               {navLinks.map((link, idx) => (

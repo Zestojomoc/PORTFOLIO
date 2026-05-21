@@ -24,9 +24,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ronnel P. Jomoc Jr. — Full Stack Web Developer",
+  title: "Ronnel Jr.",
   description:
     "Monochrome editorial portfolio of Ronnel P. Jomoc Jr. Crafting high-performance web systems, responsive user interfaces, and elegant backend architectures.",
+  icons: {
+    icon: "/JayImage.png",
+    shortcut: "/JayImage.png",
+    apple: "/JayImage.png",
+  },
   authors: [{ name: "Ronnel P. Jomoc Jr." }],
   keywords: [
     "Ronnel P. Jomoc Jr.",
