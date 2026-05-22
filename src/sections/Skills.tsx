@@ -1,10 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useIsMobile } from "@/lib/useIsMobile";
 
 export default function Skills() {
-  const isMobile = useIsMobile();
   const revealViewport = { once: true, amount: 0.12 };
 
   const skills = [
@@ -35,25 +33,14 @@ export default function Skills() {
     },
   };
 
-  const containerRevealProps = isMobile
-    ? { initial: false as const }
-    : {
-        variants: containerVariants,
-        initial: "hidden" as const,
-        whileInView: "visible" as const,
-        viewport: revealViewport,
-      };
-
-  const tagRevealProps = isMobile ? {} : { variants: tagVariants, whileHover: { y: -3 } };
-
   return (
-    <section className="relative w-full overflow-hidden border-t border-neutral-900 bg-black py-20">
+    <section className="relative w-full py-20 bg-black border-t border-neutral-900 overflow-hidden">
       {/* Decorative Index Label */}
       <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         04 / COMPETENCIES
       </div>
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 2xl:max-w-[1400px]">
+      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Title Grid */}
           <div className="lg:col-span-4">
@@ -68,14 +55,18 @@ export default function Skills() {
           {/* Right Tags Grid */}
           <div className="lg:col-span-8">
             <motion.div
-              {...containerRevealProps}
-              className="grid grid-cols-1 gap-3 sm:flex sm:flex-wrap"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={revealViewport}
+              className="flex flex-wrap gap-3"
             >
               {skills.map((skill) => (
                 <motion.div
                   key={skill}
-                  {...tagRevealProps}
-                  className="rounded-sm border border-neutral-800 bg-neutral-950/40 px-4 py-3 text-center text-[10px] font-mono leading-relaxed tracking-[0.14em] text-neutral-300 transition-colors duration-300 hover:border-white hover:bg-neutral-950 hover:text-white sm:w-auto sm:px-6 sm:py-4 sm:text-sm sm:tracking-wider hover-target"
+                  variants={tagVariants}
+                  whileHover={{ y: -3 }}
+                  className="px-4 sm:px-6 py-3 sm:py-4 border border-neutral-800 bg-neutral-950/40 text-neutral-300 text-[10px] sm:text-sm font-mono tracking-[0.18em] sm:tracking-wider hover:border-white hover:text-white hover:bg-neutral-950 transition-colors duration-300 rounded-sm hover-target"
                 >
                   {skill}
                 </motion.div>

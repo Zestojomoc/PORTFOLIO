@@ -1,10 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useIsMobile } from "@/lib/useIsMobile";
 
 export default function WhoAmI() {
-  const isMobile = useIsMobile();
   const revealViewport = { once: true, amount: 0.12 };
 
   const textVariants = {
@@ -24,50 +22,41 @@ export default function WhoAmI() {
     },
   };
 
-  const textRevealProps = isMobile
-    ? { initial: false as const }
-    : {
-        initial: "hidden" as const,
-        whileInView: "visible" as const,
-        viewport: revealViewport,
-        variants: textVariants,
-      };
-
-  const lineRevealProps = isMobile
-    ? { initial: false as const, style: { width: "100%" } }
-    : {
-        initial: "hidden" as const,
-        whileInView: "visible" as const,
-        viewport: revealViewport,
-        variants: lineVariants,
-      };
-
   return (
-    <section id="who" className="relative w-full overflow-hidden border-t border-neutral-900 bg-black py-20 sm:py-24 md:py-32">
+    <section id="who" className="relative w-full py-24 md:py-32 bg-black border-t border-neutral-900 overflow-hidden">
       {/* Decorative Index Label */}
       <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         01 / IDENTITY
       </div>
 
-      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 sm:gap-12 sm:px-6 md:px-12 lg:grid-cols-12 lg:gap-24 2xl:max-w-[1400px]">
+      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative">
         {/* Left Column: Heading */}
         <div className="lg:col-span-4 flex flex-col justify-start">
           <motion.h2
-            {...textRevealProps}
+            initial="hidden"
+            whileInView="visible"
+            viewport={revealViewport}
+            variants={textVariants}
             className="text-xs uppercase tracking-[0.3em] text-neutral-500 font-mono mb-4"
           >
             About Me
           </motion.h2>
           <motion.h3
-            {...textRevealProps}
-            className="text-[1.9rem] font-display font-bold leading-tight tracking-tight text-white sm:text-5xl"
+            initial="hidden"
+            whileInView="visible"
+            viewport={revealViewport}
+            variants={textVariants}
+            className="text-3xl sm:text-5xl font-display font-bold tracking-tight text-white leading-tight"
           >
             Crafting Digital
             <br />
             Experiences.
           </motion.h3>
           <motion.div
-            {...lineRevealProps}
+            initial="hidden"
+            whileInView="visible"
+            viewport={revealViewport}
+            variants={lineVariants}
             className="h-[1px] bg-neutral-800 mt-8 w-full"
           />
         </div>
@@ -76,8 +65,11 @@ export default function WhoAmI() {
         <div className="lg:col-span-8 flex flex-col justify-between space-y-12">
           {/* Big Editorial Quote/Statement */}
           <motion.p
-            {...textRevealProps}
-            className="text-base font-sans font-light leading-relaxed tracking-wide text-neutral-200 sm:text-2xl md:text-3xl"
+            initial="hidden"
+            whileInView="visible"
+            viewport={revealViewport}
+            variants={textVariants}
+            className="text-lg sm:text-2xl md:text-3xl font-sans font-light leading-relaxed text-neutral-200 tracking-wide"
           >
             I&apos;m a full stack web developer based in the Philippines. I build clean, responsive, and easy-to-use web applications for people, businesses, and projects.
           </motion.p>
@@ -85,7 +77,10 @@ export default function WhoAmI() {
           {/* Details split */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-neutral-400 font-light leading-relaxed">
             <motion.div
-              {...textRevealProps}
+              initial="hidden"
+              whileInView="visible"
+              viewport={revealViewport}
+              variants={textVariants}
               className="space-y-4"
             >
               <h4 className="font-mono text-xs uppercase tracking-widest text-white">
@@ -97,7 +92,10 @@ export default function WhoAmI() {
             </motion.div>
 
             <motion.div
-              {...textRevealProps}
+              initial="hidden"
+              whileInView="visible"
+              viewport={revealViewport}
+              variants={textVariants}
               className="space-y-4"
             >
               <h4 className="font-mono text-xs uppercase tracking-widest text-white">
@@ -111,7 +109,10 @@ export default function WhoAmI() {
 
           {/* Mini Tech Quote */}
           <motion.div
-            {...textRevealProps}
+            initial="hidden"
+            whileInView="visible"
+            viewport={revealViewport}
+            variants={textVariants}
             className="pt-6 border-t border-neutral-900"
           >
             <span className="text-[10px] font-mono text-neutral-600 tracking-[0.2em] uppercase">

@@ -3,10 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { useIsMobile } from "@/lib/useIsMobile";
 
 export default function Projects() {
-  const isMobile = useIsMobile();
   const revealViewport = { once: true, amount: 0.12 };
 
   const projects = [
@@ -45,23 +43,14 @@ export default function Projects() {
     },
   };
 
-  const textRevealProps = isMobile
-    ? { initial: false as const }
-    : {
-        initial: "hidden" as const,
-        whileInView: "visible" as const,
-        viewport: revealViewport,
-        variants: textVariants,
-      };
-
   return (
-    <section id="projects" className="relative w-full overflow-hidden border-t border-neutral-900 bg-black py-20 md:py-32">
+    <section id="projects" className="relative w-full py-20 md:py-32 bg-black border-t border-neutral-900 overflow-hidden">
       {/* Decorative Index Label */}
       <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         05 / WORK
       </div>
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 2xl:max-w-[1400px]">
+      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 relative">
         {/* Section Header */}
         <div className="mb-12 md:mb-20">
           <span className="text-xs uppercase tracking-[0.3em] text-neutral-500 font-mono mb-2 block">
@@ -91,43 +80,46 @@ export default function Projects() {
                   }`}
                 >
                   <motion.div
-                    initial={isMobile ? false : { opacity: 0, y: 40 }}
-                    whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
-                    viewport={isMobile ? undefined : revealViewport}
-                    transition={isMobile ? undefined : { duration: 0.8, ease: "easeOut" as const }}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={revealViewport}
+                    transition={{ duration: 0.8, ease: "easeOut" as const }}
                     className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-neutral-950 border border-neutral-900 group overflow-hidden rounded-sm hover-target"
                   >
                     <Image
                       src={project.image}
                       alt={project.name}
                       fill
-                      className="object-cover filter grayscale contrast-110 transition-all duration-700 ease-in-out md:group-hover:grayscale-0 md:group-hover:scale-105"
+                      className="object-cover filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
                       sizes="(max-width: 768px) 100vw, 800px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-500 md:group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </motion.div>
                 </div>
 
                 {/* Typography details block */}
                 <motion.div
-                  {...textRevealProps}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={revealViewport}
+                  variants={textVariants}
                   className={`lg:col-span-5 flex flex-col justify-center order-2 ${
                     isEven ? "lg:order-2" : "lg:order-1"
                   }`}
                 >
-                  <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-4">
                     <span className="text-xs font-mono text-neutral-600">{project.index}</span>
-                    <span className="max-w-full break-words text-xs font-mono uppercase tracking-widest text-neutral-500">
+                    <span className="text-xs uppercase tracking-widest text-neutral-500 font-mono">
                       {project.type}
                     </span>
                   </div>
 
-                  <h4 className="group mb-5 text-[2rem] font-display font-extrabold uppercase tracking-tight text-white sm:mb-6 sm:text-4xl md:text-5xl">
+                  <h4 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold uppercase tracking-tight text-white mb-5 sm:mb-6 group">
                     <a
                       href={normalizedLink}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
-                      className="flex flex-wrap items-center gap-2 hover-target"
+                      className="hover-target flex items-center gap-2"
                     >
                       {project.name}
                     </a>
@@ -142,10 +134,10 @@ export default function Projects() {
                       href={normalizedLink}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
-                      className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-white transition-colors duration-300 md:hover:text-neutral-400 group hover-target border-b border-white pb-1"
+                      className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-white hover:text-neutral-400 transition-colors duration-300 group hover-target border-b border-white pb-1"
                     >
                       <span>View Project</span>
-                      <ArrowUpRight size={14} className="transition-transform duration-300 md:group-hover:translate-x-1 md:group-hover:-translate-y-1" />
+                      <ArrowUpRight size={14} className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                     </a>
                   </div>
                 </motion.div>

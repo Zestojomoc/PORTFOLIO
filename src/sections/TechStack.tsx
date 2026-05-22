@@ -1,10 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useIsMobile } from "@/lib/useIsMobile";
 
 export default function TechStack() {
-  const isMobile = useIsMobile();
   const revealViewport = { once: true, amount: 0.12 };
 
   const coreTech = [
@@ -39,27 +37,16 @@ export default function TechStack() {
     },
   };
 
-  const gridRevealProps = isMobile
-    ? { initial: false as const }
-    : {
-        variants: containerVariants,
-        initial: "hidden" as const,
-        whileInView: "visible" as const,
-        viewport: revealViewport,
-      };
-
-  const cardRevealProps = isMobile ? {} : { variants: cardVariants };
-
   return (
-    <section id="stack" className="relative w-full overflow-hidden border-t border-neutral-900 bg-black py-20 sm:py-24 md:py-32">
+    <section id="stack" className="relative w-full py-24 md:py-32 bg-black border-t border-neutral-900 overflow-hidden">
       {/* Decorative Label */}
       <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         02 / CAPABILITIES
       </div>
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 2xl:max-w-[1400px]">
+      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 relative">
         {/* Section Header */}
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-16">
           <span className="text-xs uppercase tracking-[0.3em] text-neutral-500 font-mono mb-2 block">
             Technical Arsenal
           </span>
@@ -70,20 +57,23 @@ export default function TechStack() {
 
         {/* Core Tech Stack Editorial Grid */}
         <motion.div
-          {...gridRevealProps}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={revealViewport}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-neutral-900 bg-neutral-950/20"
         >
           {coreTech.map((tech, index) => (
             <motion.div
               key={tech.name}
-              {...cardRevealProps}
-              className="group relative cursor-default border-b border-neutral-900 p-5 transition-colors duration-500 md:hover:bg-white md:hover:text-black sm:p-8 md:border-r md:last:border-r-0 lg:border-r [&:nth-child(3n)]:lg:border-r-0 last:border-b-0"
+              variants={cardVariants}
+                className="group relative p-6 sm:p-8 border-b border-neutral-900 md:border-r last:border-b-0 md:last:border-r-0 lg:border-r [&:nth-child(3n)]:lg:border-r-0 hover:bg-white hover:text-black transition-colors duration-500 cursor-default"
             >
               <div className="flex justify-between items-start mb-6">
-                <span className="text-[10px] font-mono tracking-widest text-neutral-500 md:group-hover:text-neutral-700 uppercase">
+                <span className="text-[10px] font-mono tracking-widest text-neutral-500 group-hover:text-neutral-700 uppercase">
                   {tech.category}
                 </span>
-                <span className="text-[10px] font-mono text-neutral-600 md:group-hover:text-neutral-400">
+                <span className="text-[10px] font-mono text-neutral-600 group-hover:text-neutral-400">
                   {"// 0"}
                   {index + 1}
                 </span>
@@ -91,7 +81,7 @@ export default function TechStack() {
               <h4 className="text-lg sm:text-xl font-display font-bold tracking-wide mb-2">
                 {tech.name}
               </h4>
-              <p className="text-xs text-neutral-500 leading-relaxed font-light md:group-hover:text-neutral-800">
+              <p className="text-xs text-neutral-500 group-hover:text-neutral-800 leading-relaxed font-light">
                 {tech.desc}
               </p>
             </motion.div>
@@ -113,8 +103,8 @@ export default function TechStack() {
               {tools.map((tool) => (
                 <motion.div
                   key={tool}
-                  whileHover={isMobile ? undefined : { scale: 1.05 }}
-                  className="rounded-sm border border-neutral-900 bg-neutral-950 px-4 py-3 text-center text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 transition-all duration-300 hover:border-white hover:text-white sm:px-6 sm:py-4 sm:text-xs sm:tracking-widest hover-target"
+                  whileHover={{ scale: 1.05 }}
+                  className="px-4 sm:px-6 py-3 sm:py-4 border border-neutral-900 bg-neutral-950 text-neutral-300 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] sm:tracking-widest hover:border-white hover:text-white transition-all duration-300 rounded-sm hover-target"
                 >
                   {tool}
                 </motion.div>

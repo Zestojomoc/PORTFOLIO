@@ -29,15 +29,15 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="relative w-full overflow-hidden border-t border-neutral-900 bg-[#050505] py-20 sm:py-24 md:py-32">
+    <section id="services" className="relative w-full py-24 md:py-32 bg-[#050505] border-t border-neutral-900 overflow-hidden">
       {/* Decorative Index Label */}
       <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         03 / OFFERINGS
       </div>
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 2xl:max-w-[1400px]">
+      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 relative">
         {/* Section Header */}
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-16">
           <span className="text-xs uppercase tracking-[0.3em] text-neutral-500 font-mono mb-2 block">
             Crafting value
           </span>
@@ -59,7 +59,7 @@ export default function Services() {
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
                 layout
-                className={`relative flex min-h-[280px] flex-col justify-between rounded-sm border bg-neutral-950/20 p-5 transition-all duration-500 cursor-default sm:min-h-[380px] sm:p-8 md:p-10 ${
+                className={`relative p-6 sm:p-8 md:p-10 border transition-all duration-500 cursor-default rounded-sm flex flex-col justify-between min-h-[320px] sm:min-h-[380px] bg-neutral-950/20 ${
                   isHovered
                     ? "border-white"
                     : isAnyHovered
@@ -68,7 +68,7 @@ export default function Services() {
                 }`}
               >
                 <div>
-                  <div className="mb-8 flex items-center justify-between sm:mb-10">
+                  <div className="flex justify-between items-center mb-10">
                     {/* Subtle Icon */}
                     <div className="p-3 border border-neutral-900 bg-black rounded-sm">
                       <Icon
@@ -81,7 +81,7 @@ export default function Services() {
                     <span className="text-xs font-mono text-neutral-700">{service.index}</span>
                   </div>
 
-                  <h4 className="mb-4 text-xl font-display font-bold leading-tight text-white sm:mb-6 md:text-2xl">
+                  <h4 className="text-xl md:text-2xl font-display font-bold text-white mb-4 sm:mb-6 leading-tight">
                     {service.title}
                   </h4>
 

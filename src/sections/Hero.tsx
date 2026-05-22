@@ -3,11 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
-import { useIsMobile } from "@/lib/useIsMobile";
 
 export default function Hero() {
-  const isMobile = useIsMobile();
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,20 +33,8 @@ export default function Hero() {
     }
   };
 
-  const containerMotionProps = isMobile
-    ? { initial: false as const }
-    : { variants: containerVariants, initial: "hidden" as const, animate: "visible" as const };
-
-  const itemMotionProps = isMobile
-    ? { initial: false as const }
-    : { variants: itemVariants };
-
-  const imageMotionProps = isMobile
-    ? { initial: false as const }
-    : { variants: imageVariants, initial: "hidden" as const, animate: "visible" as const };
-
   return (
-    <section className="relative flex min-h-[auto] w-full items-center justify-center overflow-hidden bg-black pt-22 pb-8 sm:pt-24 sm:pb-10 md:min-h-screen md:pt-24 md:pb-16">
+    <section className="relative min-h-[auto] md:min-h-screen w-full flex items-center justify-center pt-24 pb-10 md:pt-24 md:pb-16 overflow-hidden bg-black">
       {/* Background Grid Lines aligned with content max-width */}
       <div className="absolute inset-0 z-0 pointer-events-none hidden md:block opacity-20 max-w-7xl 2xl:max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="relative w-full h-full">
@@ -59,22 +44,24 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-6 px-4 sm:gap-8 sm:px-6 md:gap-12 md:px-12 lg:grid-cols-12 2xl:max-w-[1400px]">
+      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-5 sm:px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center z-10 relative">
         {/* Info Column */}
         <motion.div
-          {...containerMotionProps}
-          className="order-1 flex flex-col justify-center space-y-4 text-left sm:space-y-5 md:space-y-8 lg:order-1 lg:col-span-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="lg:col-span-8 flex flex-col justify-center space-y-5 md:space-y-8 text-left order-1 lg:order-1"
         >
           <div className="space-y-3 md:space-y-4">
             <motion.span
-              {...itemMotionProps}
-              className="text-[10px] uppercase tracking-[0.28em] text-neutral-500 sm:text-xs sm:tracking-[0.35em] font-mono"
+              variants={itemVariants}
+              className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-neutral-500 font-mono"
             >
               Available for projects
             </motion.span>
             <motion.h1
-              {...itemMotionProps}
-              className="font-display text-[clamp(2.35rem,14vw,4rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-white sm:text-6xl md:text-7xl md:tracking-tighter xl:text-[5.5rem]"
+              variants={itemVariants}
+              className="text-[2.9rem] sm:text-6xl md:text-7xl xl:text-[5.5rem] font-display font-extrabold tracking-[-0.04em] md:tracking-tighter leading-[0.92] text-white"
             >
               <span className="block">Ronnel P.</span>
               <span className="block text-stroke-white text-stroke-white-hover transition-colors duration-500">
@@ -82,21 +69,21 @@ export default function Hero() {
               </span>
             </motion.h1>
             <motion.h2
-              {...itemMotionProps}
-              className="text-base font-sans font-light tracking-wide text-neutral-300 sm:text-lg md:text-2xl"
+              variants={itemVariants}
+              className="text-lg sm:text-lg md:text-2xl font-sans font-light tracking-wide text-neutral-300"
             >
               Full Stack Web Developer
             </motion.h2>
           </div>
 
           <motion.p
-            {...itemMotionProps}
-            className="max-w-xl text-sm font-light leading-relaxed text-neutral-400 sm:text-base md:text-base"
+            variants={itemVariants}
+            className="text-sm md:text-base text-neutral-400 max-w-xl font-light leading-relaxed"
           >
             Building clean, responsive, and modern web experiences with a focus on simple design and reliable functionality.
           </motion.p>
 
-          <motion.div {...itemMotionProps} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-1 md:pt-2 w-full sm:w-auto">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-1 md:pt-2 w-full sm:w-auto">
             <Button variant="solid" onClick={() => scrollToSection("projects")} className="w-full sm:w-auto">
               View Projects
             </Button>
@@ -108,13 +95,15 @@ export default function Hero() {
 
         {/* Portrait Image Column */}
         <motion.div
-          {...imageMotionProps}
-          className="order-2 flex justify-center pt-1 sm:pt-2 md:pt-0 lg:order-2 lg:col-span-4 lg:justify-end"
+          variants={imageVariants}
+          initial="hidden"
+          animate="visible"
+          className="lg:col-span-4 flex justify-center lg:justify-end order-2 lg:order-2 pt-2 md:pt-0"
         >
           {/* Wrapper to align image and its background offset border */}
-          <div className="relative aspect-[3/4] w-full max-w-[min(72vw,230px)] sm:max-w-[340px] md:max-w-[380px]">
+          <div className="relative w-full max-w-[190px] sm:max-w-[340px] md:max-w-[380px] aspect-[3/4]">
             {/* Overlapping Background Container */}
-            <div className="absolute inset-0 z-0 hidden translate-x-3 translate-y-3 rounded-sm border border-neutral-900 pointer-events-none sm:block sm:translate-x-4 sm:translate-y-4" />
+            <div className="absolute inset-0 border border-neutral-900 translate-x-4 translate-y-4 z-0 pointer-events-none rounded-sm hidden sm:block" />
 
             {/* Main Image Container */}
             <div className="relative w-full h-full bg-neutral-950 border border-neutral-900 overflow-hidden group rounded-sm z-10">
@@ -123,7 +112,7 @@ export default function Hero() {
                 alt="Ronnel P. Jomoc Jr."
                 fill
                 priority
-                className="object-cover object-top filter grayscale contrast-115 transition-all duration-700 ease-in-out md:hover:grayscale-0 md:hover:scale-105"
+                className="object-cover object-top filter grayscale contrast-115 hover:grayscale-0 transition-all duration-700 ease-in-out hover:scale-105"
                 sizes="(max-width: 640px) 190px, (max-width: 768px) 280px, (max-width: 1024px) 340px, 380px"
               />
             </div>
