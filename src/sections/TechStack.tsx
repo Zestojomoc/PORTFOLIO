@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 export default function TechStack() {
+  const isMobile = useIsMobile();
   const revealViewport = { once: true, amount: 0.12 };
 
   const coreTech = [
@@ -37,6 +39,17 @@ export default function TechStack() {
     },
   };
 
+  const gridRevealProps = isMobile
+    ? { initial: false as const }
+    : {
+        variants: containerVariants,
+        initial: "hidden" as const,
+        whileInView: "visible" as const,
+        viewport: revealViewport,
+      };
+
+  const cardRevealProps = isMobile ? {} : { variants: cardVariants };
+
   return (
     <section id="stack" className="relative w-full overflow-hidden border-t border-neutral-900 bg-black py-20 sm:py-24 md:py-32">
       {/* Decorative Label */}
@@ -57,23 +70,20 @@ export default function TechStack() {
 
         {/* Core Tech Stack Editorial Grid */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={revealViewport}
+          {...gridRevealProps}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-neutral-900 bg-neutral-950/20"
         >
           {coreTech.map((tech, index) => (
             <motion.div
               key={tech.name}
-              variants={cardVariants}
-                className="group relative cursor-default border-b border-neutral-900 p-5 transition-colors duration-500 hover:bg-white hover:text-black sm:p-8 md:border-r md:last:border-r-0 lg:border-r [&:nth-child(3n)]:lg:border-r-0 last:border-b-0"
+              {...cardRevealProps}
+              className="group relative cursor-default border-b border-neutral-900 p-5 transition-colors duration-500 md:hover:bg-white md:hover:text-black sm:p-8 md:border-r md:last:border-r-0 lg:border-r [&:nth-child(3n)]:lg:border-r-0 last:border-b-0"
             >
               <div className="flex justify-between items-start mb-6">
-                <span className="text-[10px] font-mono tracking-widest text-neutral-500 group-hover:text-neutral-700 uppercase">
+                <span className="text-[10px] font-mono tracking-widest text-neutral-500 md:group-hover:text-neutral-700 uppercase">
                   {tech.category}
                 </span>
-                <span className="text-[10px] font-mono text-neutral-600 group-hover:text-neutral-400">
+                <span className="text-[10px] font-mono text-neutral-600 md:group-hover:text-neutral-400">
                   {"// 0"}
                   {index + 1}
                 </span>
@@ -81,7 +91,7 @@ export default function TechStack() {
               <h4 className="text-lg sm:text-xl font-display font-bold tracking-wide mb-2">
                 {tech.name}
               </h4>
-              <p className="text-xs text-neutral-500 group-hover:text-neutral-800 leading-relaxed font-light">
+              <p className="text-xs text-neutral-500 leading-relaxed font-light md:group-hover:text-neutral-800">
                 {tech.desc}
               </p>
             </motion.div>
@@ -103,7 +113,7 @@ export default function TechStack() {
               {tools.map((tool) => (
                 <motion.div
                   key={tool}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={isMobile ? undefined : { scale: 1.05 }}
                   className="rounded-sm border border-neutral-900 bg-neutral-950 px-4 py-3 text-center text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 transition-all duration-300 hover:border-white hover:text-white sm:px-6 sm:py-4 sm:text-xs sm:tracking-widest hover-target"
                 >
                   {tool}

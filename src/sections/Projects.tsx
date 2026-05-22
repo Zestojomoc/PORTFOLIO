@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 export default function Projects() {
+  const isMobile = useIsMobile();
   const revealViewport = { once: true, amount: 0.12 };
 
   const projects = [
@@ -43,6 +45,15 @@ export default function Projects() {
     },
   };
 
+  const textRevealProps = isMobile
+    ? { initial: false as const }
+    : {
+        initial: "hidden" as const,
+        whileInView: "visible" as const,
+        viewport: revealViewport,
+        variants: textVariants,
+      };
+
   return (
     <section id="projects" className="relative w-full overflow-hidden border-t border-neutral-900 bg-black py-20 md:py-32">
       {/* Decorative Index Label */}
@@ -80,29 +91,26 @@ export default function Projects() {
                   }`}
                 >
                   <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={revealViewport}
-                    transition={{ duration: 0.8, ease: "easeOut" as const }}
+                    initial={isMobile ? false : { opacity: 0, y: 40 }}
+                    whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
+                    viewport={isMobile ? undefined : revealViewport}
+                    transition={isMobile ? undefined : { duration: 0.8, ease: "easeOut" as const }}
                     className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-neutral-950 border border-neutral-900 group overflow-hidden rounded-sm hover-target"
                   >
                     <Image
                       src={project.image}
                       alt={project.name}
                       fill
-                      className="object-cover filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                      className="object-cover filter grayscale contrast-110 transition-all duration-700 ease-in-out md:group-hover:grayscale-0 md:group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 800px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-500 md:group-hover:opacity-100" />
                   </motion.div>
                 </div>
 
                 {/* Typography details block */}
                 <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={revealViewport}
-                  variants={textVariants}
+                  {...textRevealProps}
                   className={`lg:col-span-5 flex flex-col justify-center order-2 ${
                     isEven ? "lg:order-2" : "lg:order-1"
                   }`}
@@ -134,10 +142,10 @@ export default function Projects() {
                       href={normalizedLink}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
-                      className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-white hover:text-neutral-400 transition-colors duration-300 group hover-target border-b border-white pb-1"
+                      className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-white transition-colors duration-300 md:hover:text-neutral-400 group hover-target border-b border-white pb-1"
                     >
                       <span>View Project</span>
-                      <ArrowUpRight size={14} className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                      <ArrowUpRight size={14} className="transition-transform duration-300 md:group-hover:translate-x-1 md:group-hover:-translate-y-1" />
                     </a>
                   </div>
                 </motion.div>

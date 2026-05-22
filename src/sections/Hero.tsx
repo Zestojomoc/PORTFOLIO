@@ -3,8 +3,11 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 export default function Hero() {
+  const isMobile = useIsMobile();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -33,6 +36,18 @@ export default function Hero() {
     }
   };
 
+  const containerMotionProps = isMobile
+    ? { initial: false as const }
+    : { variants: containerVariants, initial: "hidden" as const, animate: "visible" as const };
+
+  const itemMotionProps = isMobile
+    ? { initial: false as const }
+    : { variants: itemVariants };
+
+  const imageMotionProps = isMobile
+    ? { initial: false as const }
+    : { variants: imageVariants, initial: "hidden" as const, animate: "visible" as const };
+
   return (
     <section className="relative flex min-h-[auto] w-full items-center justify-center overflow-hidden bg-black pt-22 pb-8 sm:pt-24 sm:pb-10 md:min-h-screen md:pt-24 md:pb-16">
       {/* Background Grid Lines aligned with content max-width */}
@@ -47,20 +62,18 @@ export default function Hero() {
       <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-6 px-4 sm:gap-8 sm:px-6 md:gap-12 md:px-12 lg:grid-cols-12 2xl:max-w-[1400px]">
         {/* Info Column */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+          {...containerMotionProps}
           className="order-1 flex flex-col justify-center space-y-4 text-left sm:space-y-5 md:space-y-8 lg:order-1 lg:col-span-8"
         >
           <div className="space-y-3 md:space-y-4">
             <motion.span
-              variants={itemVariants}
+              {...itemMotionProps}
               className="text-[10px] uppercase tracking-[0.28em] text-neutral-500 sm:text-xs sm:tracking-[0.35em] font-mono"
             >
               Available for projects
             </motion.span>
             <motion.h1
-              variants={itemVariants}
+              {...itemMotionProps}
               className="font-display text-[clamp(2.35rem,14vw,4rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-white sm:text-6xl md:text-7xl md:tracking-tighter xl:text-[5.5rem]"
             >
               <span className="block">Ronnel P.</span>
@@ -69,7 +82,7 @@ export default function Hero() {
               </span>
             </motion.h1>
             <motion.h2
-              variants={itemVariants}
+              {...itemMotionProps}
               className="text-base font-sans font-light tracking-wide text-neutral-300 sm:text-lg md:text-2xl"
             >
               Full Stack Web Developer
@@ -77,13 +90,13 @@ export default function Hero() {
           </div>
 
           <motion.p
-            variants={itemVariants}
+            {...itemMotionProps}
             className="max-w-xl text-sm font-light leading-relaxed text-neutral-400 sm:text-base md:text-base"
           >
             Building clean, responsive, and modern web experiences with a focus on simple design and reliable functionality.
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-1 md:pt-2 w-full sm:w-auto">
+          <motion.div {...itemMotionProps} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-1 md:pt-2 w-full sm:w-auto">
             <Button variant="solid" onClick={() => scrollToSection("projects")} className="w-full sm:w-auto">
               View Projects
             </Button>
@@ -95,9 +108,7 @@ export default function Hero() {
 
         {/* Portrait Image Column */}
         <motion.div
-          variants={imageVariants}
-          initial="hidden"
-          animate="visible"
+          {...imageMotionProps}
           className="order-2 flex justify-center pt-1 sm:pt-2 md:pt-0 lg:order-2 lg:col-span-4 lg:justify-end"
         >
           {/* Wrapper to align image and its background offset border */}
@@ -112,7 +123,7 @@ export default function Hero() {
                 alt="Ronnel P. Jomoc Jr."
                 fill
                 priority
-                className="object-cover object-top filter grayscale contrast-115 hover:grayscale-0 transition-all duration-700 ease-in-out hover:scale-105"
+                className="object-cover object-top filter grayscale contrast-115 transition-all duration-700 ease-in-out md:hover:grayscale-0 md:hover:scale-105"
                 sizes="(max-width: 640px) 190px, (max-width: 768px) 280px, (max-width: 1024px) 340px, 380px"
               />
             </div>

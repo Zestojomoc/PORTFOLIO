@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Mail, Phone, ArrowRight } from "lucide-react";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 const Facebook = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -40,6 +41,7 @@ const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export default function Connect() {
+  const isMobile = useIsMobile();
   const revealViewport = { once: true, amount: 0.12 };
   const cardViewport = { once: true, amount: 0.08 };
 
@@ -79,6 +81,15 @@ export default function Connect() {
     },
   };
 
+  const headingRevealProps = isMobile
+    ? { initial: false as const }
+    : {
+        initial: "hidden" as const,
+        whileInView: "visible" as const,
+        viewport: revealViewport,
+        variants: textVariants,
+      };
+
   return (
     <section id="connect" className="relative w-full overflow-hidden border-t border-neutral-900 bg-[#050505] py-20 md:py-36">
       {/* Decorative Index Label */}
@@ -95,10 +106,7 @@ export default function Connect() {
                 Let&apos;s collaborate
               </span>
               <motion.h3
-                initial="hidden"
-                whileInView="visible"
-                viewport={revealViewport}
-                variants={textVariants}
+                {...headingRevealProps}
                 className="mb-6 max-w-[12ch] font-display text-[clamp(2.2rem,13vw,4rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white sm:mb-8 sm:text-6xl"
               >
                 Let&apos;s build
@@ -128,28 +136,28 @@ export default function Connect() {
                   href={contact.href}
                   target={contact.label !== "Contact Number" && contact.label !== "Email" ? "_blank" : undefined}
                   rel={contact.label !== "Contact Number" && contact.label !== "Email" ? "noopener noreferrer" : undefined}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={cardViewport}
+                  initial={isMobile ? false : { opacity: 0, x: 20 }}
+                  whileInView={isMobile ? undefined : { opacity: 1, x: 0 }}
+                  viewport={isMobile ? undefined : cardViewport}
                   className="group block rounded-sm border border-neutral-900 bg-neutral-950/40 p-4 transition-all duration-500 hover:border-white sm:p-6 hover-target"
                 >
                   <div className="flex items-start justify-between gap-4 sm:items-center">
                     <div className="flex min-w-0 items-center space-x-3 sm:space-x-4">
                       <div className="p-2 border border-neutral-900 bg-black group-hover:border-neutral-800 transition-colors duration-300 rounded-sm">
-                        <Icon size={16} className="text-neutral-500 group-hover:text-white transition-colors duration-300" />
+                        <Icon size={16} className="text-neutral-500 transition-colors duration-300 md:group-hover:text-white" />
                       </div>
                       <div className="min-w-0">
                         <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase block mb-0.5">
                           {contact.label}
                         </span>
-                        <span className="break-all text-sm font-sans text-white transition-colors duration-300 group-hover:text-neutral-300 sm:text-base">
+                        <span className="break-all text-sm font-sans text-white transition-colors duration-300 md:group-hover:text-neutral-300 sm:text-base">
                           {contact.value}
                         </span>
                       </div>
                     </div>
                     <ArrowRight
                       size={16}
-                      className="shrink-0 text-neutral-700 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white"
+                      className="shrink-0 text-neutral-700 transition-all duration-300 md:group-hover:translate-x-1 md:group-hover:text-white"
                     />
                   </div>
                 </motion.a>

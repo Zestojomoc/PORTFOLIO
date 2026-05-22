@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 export default function Header() {
@@ -62,42 +61,29 @@ export default function Header() {
       </header>
 
       {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-30 flex flex-col justify-start space-y-6 overflow-y-auto bg-black/95 px-4 pt-22 pb-8 backdrop-blur-md sm:space-y-8 sm:px-6 sm:pt-24 md:hidden"
-          >
-            <nav className="flex flex-col space-y-6">
-              {navLinks.map((link, idx) => (
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  key={link.name}
+      {isOpen && (
+        <div className="fixed inset-0 z-30 flex flex-col justify-start space-y-6 overflow-y-auto bg-black/95 px-4 pt-22 pb-8 backdrop-blur-md sm:space-y-8 sm:px-6 sm:pt-24 md:hidden">
+          <nav className="flex flex-col space-y-6">
+            {navLinks.map((link) => (
+              <div key={link.name}>
+                <a
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block font-display text-[clamp(1.9rem,9vw,2.5rem)] font-bold uppercase tracking-[0.08em] text-neutral-400 transition-colors duration-300 hover:text-white"
                 >
-                  <a
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block font-display text-[clamp(1.9rem,9vw,2.5rem)] font-bold uppercase tracking-[0.08em] text-neutral-400 transition-colors duration-300 hover:text-white"
-                  >
-                    {link.name}
-                  </a>
-                </motion.div>
-              ))}
-            </nav>
-            <div className="pt-8 border-t border-neutral-900 flex flex-col space-y-2">
-              <span className="text-xs uppercase tracking-widest text-neutral-600 font-mono">Available for projects</span>
-              <a href="mailto:jayjayjomoc@gmail.com" className="break-all text-sm font-mono text-neutral-400">
-                jayjayjomoc@gmail.com
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  {link.name}
+                </a>
+              </div>
+            ))}
+          </nav>
+          <div className="pt-8 border-t border-neutral-900 flex flex-col space-y-2">
+            <span className="text-xs uppercase tracking-widest text-neutral-600 font-mono">Available for projects</span>
+            <a href="mailto:jayjayjomoc@gmail.com" className="break-all text-sm font-mono text-neutral-400">
+              jayjayjomoc@gmail.com
+            </a>
+          </div>
+        </div>
+      )}
     </>
   );
 }

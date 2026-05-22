@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 export default function Skills() {
+  const isMobile = useIsMobile();
   const revealViewport = { once: true, amount: 0.12 };
 
   const skills = [
@@ -33,6 +35,17 @@ export default function Skills() {
     },
   };
 
+  const containerRevealProps = isMobile
+    ? { initial: false as const }
+    : {
+        variants: containerVariants,
+        initial: "hidden" as const,
+        whileInView: "visible" as const,
+        viewport: revealViewport,
+      };
+
+  const tagRevealProps = isMobile ? {} : { variants: tagVariants, whileHover: { y: -3 } };
+
   return (
     <section className="relative w-full overflow-hidden border-t border-neutral-900 bg-black py-20">
       {/* Decorative Index Label */}
@@ -55,17 +68,13 @@ export default function Skills() {
           {/* Right Tags Grid */}
           <div className="lg:col-span-8">
             <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={revealViewport}
+              {...containerRevealProps}
               className="grid grid-cols-1 gap-3 sm:flex sm:flex-wrap"
             >
               {skills.map((skill) => (
                 <motion.div
                   key={skill}
-                  variants={tagVariants}
-                  whileHover={{ y: -3 }}
+                  {...tagRevealProps}
                   className="rounded-sm border border-neutral-800 bg-neutral-950/40 px-4 py-3 text-center text-[10px] font-mono leading-relaxed tracking-[0.14em] text-neutral-300 transition-colors duration-300 hover:border-white hover:bg-neutral-950 hover:text-white sm:w-auto sm:px-6 sm:py-4 sm:text-sm sm:tracking-wider hover-target"
                 >
                   {skill}
