@@ -44,13 +44,13 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="relative w-full py-20 md:py-32 bg-black border-t border-neutral-900 overflow-hidden">
+    <section id="projects" className="relative w-full overflow-hidden border-t border-neutral-900 bg-black py-20 md:py-32">
       {/* Decorative Index Label */}
       <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         05 / WORK
       </div>
 
-      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 relative">
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 2xl:max-w-[1400px]">
         {/* Section Header */}
         <div className="mb-12 md:mb-20">
           <span className="text-xs uppercase tracking-[0.3em] text-neutral-500 font-mono mb-2 block">
@@ -107,19 +107,19 @@ export default function Projects() {
                     isEven ? "lg:order-2" : "lg:order-1"
                   }`}
                 >
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-4">
+                  <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2">
                     <span className="text-xs font-mono text-neutral-600">{project.index}</span>
-                    <span className="text-xs uppercase tracking-widest text-neutral-500 font-mono">
+                    <span className="max-w-full break-words text-xs font-mono uppercase tracking-widest text-neutral-500">
                       {project.type}
                     </span>
                   </div>
 
-                  <h4 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold uppercase tracking-tight text-white mb-5 sm:mb-6 group">
+                  <h4 className="group mb-5 text-[2rem] font-display font-extrabold uppercase tracking-tight text-white sm:mb-6 sm:text-4xl md:text-5xl">
                     <a
                       href={normalizedLink}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
-                      className="hover-target flex items-center gap-2"
+                      className="flex flex-wrap items-center gap-2 hover-target"
                     >
                       {project.name}
                     </a>

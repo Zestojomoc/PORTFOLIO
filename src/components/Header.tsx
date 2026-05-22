@@ -19,19 +19,19 @@ export default function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-40 border-b border-neutral-900 bg-black/60 backdrop-blur-md">
-        <div className="max-w-7xl 2xl:max-w-[1400px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+        <div className="mx-auto flex h-18 max-w-7xl 2xl:max-w-[1400px] items-center justify-between px-4 sm:h-20 sm:px-6 md:px-12">
           {/* Logo */}
           <a
             href="#"
             aria-label="Go to top"
-            className="inline-flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden hover-target"
+            className="inline-flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden sm:h-16 sm:w-16 hover-target"
           >
             <Image
               src="/icon-logo.png"
               alt="Ronnel P. Jomoc Jr. icon"
               width={64}
               height={64}
-              className="h-12 w-12 md:h-full md:w-full scale-110 object-contain object-[center_22%] drop-shadow-[0_0_10px_rgba(255,255,255,0.18)]"
+              className="h-11 w-11 scale-110 object-contain object-[center_22%] drop-shadow-[0_0_10px_rgba(255,255,255,0.18)] sm:h-full sm:w-full"
               unoptimized
               preload
             />
@@ -53,7 +53,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white hover-target p-2 focus:outline-none"
+            className="p-2.5 text-white focus:outline-none md:hidden hover-target"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -69,7 +69,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-30 bg-black/95 backdrop-blur-md pt-24 px-6 flex flex-col justify-start space-y-8 md:hidden overflow-y-auto"
+            className="fixed inset-0 z-30 flex flex-col justify-start space-y-6 overflow-y-auto bg-black/95 px-4 pt-22 pb-8 backdrop-blur-md sm:space-y-8 sm:px-6 sm:pt-24 md:hidden"
           >
             <nav className="flex flex-col space-y-6">
               {navLinks.map((link, idx) => (
@@ -82,7 +82,7 @@ export default function Header() {
                   <a
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="font-display text-3xl font-bold uppercase tracking-wider text-neutral-400 hover:text-white transition-colors duration-300 block"
+                    className="block font-display text-[clamp(1.9rem,9vw,2.5rem)] font-bold uppercase tracking-[0.08em] text-neutral-400 transition-colors duration-300 hover:text-white"
                   >
                     {link.name}
                   </a>
@@ -91,7 +91,7 @@ export default function Header() {
             </nav>
             <div className="pt-8 border-t border-neutral-900 flex flex-col space-y-2">
               <span className="text-xs uppercase tracking-widest text-neutral-600 font-mono">Available for projects</span>
-              <a href="mailto:jayjayjomoc@gmail.com" className="text-sm font-mono text-neutral-400">
+              <a href="mailto:jayjayjomoc@gmail.com" className="break-all text-sm font-mono text-neutral-400">
                 jayjayjomoc@gmail.com
               </a>
             </div>

@@ -23,13 +23,13 @@ export default function WhoAmI() {
   };
 
   return (
-    <section id="who" className="relative w-full py-24 md:py-32 bg-black border-t border-neutral-900 overflow-hidden">
+    <section id="who" className="relative w-full overflow-hidden border-t border-neutral-900 bg-black py-20 sm:py-24 md:py-32">
       {/* Decorative Index Label */}
       <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         01 / IDENTITY
       </div>
 
-      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative">
+      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 sm:gap-12 sm:px-6 md:px-12 lg:grid-cols-12 lg:gap-24 2xl:max-w-[1400px]">
         {/* Left Column: Heading */}
         <div className="lg:col-span-4 flex flex-col justify-start">
           <motion.h2
@@ -46,7 +46,7 @@ export default function WhoAmI() {
             whileInView="visible"
             viewport={revealViewport}
             variants={textVariants}
-            className="text-3xl sm:text-5xl font-display font-bold tracking-tight text-white leading-tight"
+            className="text-[1.9rem] font-display font-bold leading-tight tracking-tight text-white sm:text-5xl"
           >
             Crafting Digital
             <br />
@@ -69,7 +69,7 @@ export default function WhoAmI() {
             whileInView="visible"
             viewport={revealViewport}
             variants={textVariants}
-            className="text-lg sm:text-2xl md:text-3xl font-sans font-light leading-relaxed text-neutral-200 tracking-wide"
+            className="text-base font-sans font-light leading-relaxed tracking-wide text-neutral-200 sm:text-2xl md:text-3xl"
           >
             I&apos;m a full stack web developer based in the Philippines. I build clean, responsive, and easy-to-use web applications for people, businesses, and projects.
           </motion.p>

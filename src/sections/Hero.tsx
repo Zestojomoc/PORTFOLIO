@@ -34,7 +34,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[auto] md:min-h-screen w-full flex items-center justify-center pt-24 pb-10 md:pt-24 md:pb-16 overflow-hidden bg-black">
+    <section className="relative flex min-h-[auto] w-full items-center justify-center overflow-hidden bg-black pt-22 pb-8 sm:pt-24 sm:pb-10 md:min-h-screen md:pt-24 md:pb-16">
       {/* Background Grid Lines aligned with content max-width */}
       <div className="absolute inset-0 z-0 pointer-events-none hidden md:block opacity-20 max-w-7xl 2xl:max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="relative w-full h-full">
@@ -44,24 +44,24 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-5 sm:px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center z-10 relative">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-6 px-4 sm:gap-8 sm:px-6 md:gap-12 md:px-12 lg:grid-cols-12 2xl:max-w-[1400px]">
         {/* Info Column */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="lg:col-span-8 flex flex-col justify-center space-y-5 md:space-y-8 text-left order-1 lg:order-1"
+          className="order-1 flex flex-col justify-center space-y-4 text-left sm:space-y-5 md:space-y-8 lg:order-1 lg:col-span-8"
         >
           <div className="space-y-3 md:space-y-4">
             <motion.span
               variants={itemVariants}
-              className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-neutral-500 font-mono"
+              className="text-[10px] uppercase tracking-[0.28em] text-neutral-500 sm:text-xs sm:tracking-[0.35em] font-mono"
             >
               Available for projects
             </motion.span>
             <motion.h1
               variants={itemVariants}
-              className="text-[2.9rem] sm:text-6xl md:text-7xl xl:text-[5.5rem] font-display font-extrabold tracking-[-0.04em] md:tracking-tighter leading-[0.92] text-white"
+              className="font-display text-[clamp(2.35rem,14vw,4rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-white sm:text-6xl md:text-7xl md:tracking-tighter xl:text-[5.5rem]"
             >
               <span className="block">Ronnel P.</span>
               <span className="block text-stroke-white text-stroke-white-hover transition-colors duration-500">
@@ -70,7 +70,7 @@ export default function Hero() {
             </motion.h1>
             <motion.h2
               variants={itemVariants}
-              className="text-lg sm:text-lg md:text-2xl font-sans font-light tracking-wide text-neutral-300"
+              className="text-base font-sans font-light tracking-wide text-neutral-300 sm:text-lg md:text-2xl"
             >
               Full Stack Web Developer
             </motion.h2>
@@ -78,7 +78,7 @@ export default function Hero() {
 
           <motion.p
             variants={itemVariants}
-            className="text-sm md:text-base text-neutral-400 max-w-xl font-light leading-relaxed"
+            className="max-w-xl text-sm font-light leading-relaxed text-neutral-400 sm:text-base md:text-base"
           >
             Building clean, responsive, and modern web experiences with a focus on simple design and reliable functionality.
           </motion.p>
@@ -98,12 +98,12 @@ export default function Hero() {
           variants={imageVariants}
           initial="hidden"
           animate="visible"
-          className="lg:col-span-4 flex justify-center lg:justify-end order-2 lg:order-2 pt-2 md:pt-0"
+          className="order-2 flex justify-center pt-1 sm:pt-2 md:pt-0 lg:order-2 lg:col-span-4 lg:justify-end"
         >
           {/* Wrapper to align image and its background offset border */}
-          <div className="relative w-full max-w-[190px] sm:max-w-[340px] md:max-w-[380px] aspect-[3/4]">
+          <div className="relative aspect-[3/4] w-full max-w-[min(72vw,230px)] sm:max-w-[340px] md:max-w-[380px]">
             {/* Overlapping Background Container */}
-            <div className="absolute inset-0 border border-neutral-900 translate-x-4 translate-y-4 z-0 pointer-events-none rounded-sm hidden sm:block" />
+            <div className="absolute inset-0 z-0 hidden translate-x-3 translate-y-3 rounded-sm border border-neutral-900 pointer-events-none sm:block sm:translate-x-4 sm:translate-y-4" />
 
             {/* Main Image Container */}
             <div className="relative w-full h-full bg-neutral-950 border border-neutral-900 overflow-hidden group rounded-sm z-10">

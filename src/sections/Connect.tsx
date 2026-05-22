@@ -80,13 +80,13 @@ export default function Connect() {
   };
 
   return (
-    <section id="connect" className="relative w-full py-20 md:py-36 bg-[#050505] border-t border-neutral-900 overflow-hidden">
+    <section id="connect" className="relative w-full overflow-hidden border-t border-neutral-900 bg-[#050505] py-20 md:py-36">
       {/* Decorative Index Label */}
       <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
         06 / INQUIRIES
       </div>
 
-      <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 relative">
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 2xl:max-w-[1400px]">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] gap-10 md:gap-12 lg:gap-16 xl:gap-20 items-start">
           {/* Left Column: Heading Statement */}
           <div className="min-w-0 flex flex-col justify-between">
@@ -99,7 +99,7 @@ export default function Connect() {
                 whileInView="visible"
                 viewport={revealViewport}
                 variants={textVariants}
-                className="max-w-[12ch] text-3xl sm:text-6xl font-display font-extrabold uppercase tracking-tight text-white leading-[0.95] mb-6 sm:mb-8"
+                className="mb-6 max-w-[12ch] font-display text-[clamp(2.2rem,13vw,4rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white sm:mb-8 sm:text-6xl"
               >
                 Let&apos;s build
                 <br />
@@ -131,10 +131,10 @@ export default function Connect() {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={cardViewport}
-                  className="group block p-4 sm:p-6 border border-neutral-900 bg-neutral-950/40 hover:border-white transition-all duration-500 rounded-sm hover-target"
+                  className="group block rounded-sm border border-neutral-900 bg-neutral-950/40 p-4 transition-all duration-500 hover:border-white sm:p-6 hover-target"
                 >
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex items-center space-x-3 sm:space-x-4 min-w-0">
+                  <div className="flex items-start justify-between gap-4 sm:items-center">
+                    <div className="flex min-w-0 items-center space-x-3 sm:space-x-4">
                       <div className="p-2 border border-neutral-900 bg-black group-hover:border-neutral-800 transition-colors duration-300 rounded-sm">
                         <Icon size={16} className="text-neutral-500 group-hover:text-white transition-colors duration-300" />
                       </div>
@@ -142,14 +142,14 @@ export default function Connect() {
                         <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase block mb-0.5">
                           {contact.label}
                         </span>
-                        <span className="text-sm sm:text-base font-sans text-white group-hover:text-neutral-300 transition-colors duration-300 break-words">
+                        <span className="break-all text-sm font-sans text-white transition-colors duration-300 group-hover:text-neutral-300 sm:text-base">
                           {contact.value}
                         </span>
                       </div>
                     </div>
                     <ArrowRight
                       size={16}
-                      className="text-neutral-700 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300"
+                      className="shrink-0 text-neutral-700 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white"
                     />
                   </div>
                 </motion.a>
