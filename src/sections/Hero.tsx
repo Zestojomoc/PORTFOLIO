@@ -41,7 +41,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full flex items-center justify-center pt-24 pb-14 md:pt-28 md:pb-20 overflow-hidden bg-black">
+    <section id="hero" className="relative w-full flex items-center justify-center pt-24 pb-14 md:pt-28 md:pb-20 overflow-hidden bg-black">
       {/* Background Grid Lines aligned with content max-width */}
       <div className="absolute inset-0 z-0 pointer-events-none hidden md:block opacity-20 max-w-7xl 2xl:max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="relative w-full h-full">
