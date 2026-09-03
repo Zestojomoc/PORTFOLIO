@@ -64,8 +64,8 @@ export default function Connect() {
     },
     {
       label: "Contact Number",
-      value: "09100081973",
-      href: "tel:09100081973",
+      value: "+63 9100081973",
+      href: "tel:+639100081973",
       icon: Phone,
     },
   ];
