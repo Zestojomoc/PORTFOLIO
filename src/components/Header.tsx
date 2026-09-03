@@ -9,11 +9,9 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Who", href: "#who" },
-    { name: "Tech Stack", href: "#stack" },
-    { name: "Services", href: "#services" },
     { name: "Projects", href: "#projects" },
-    { name: "Connect", href: "#connect" },
+    { name: "Tech Stack", href: "#stack" },
+    { name: "Contact", href: "#connect" },
   ];
 
   return (
@@ -90,7 +88,7 @@ export default function Header() {
               ))}
             </nav>
             <div className="pt-8 border-t border-neutral-900 flex flex-col space-y-2">
-              <span className="text-xs uppercase tracking-widest text-neutral-600 font-mono">Available for projects</span>
+              <span className="text-xs uppercase tracking-widest text-neutral-600 font-mono">Connect with me</span>
               <a href="mailto:jayjayjomoc@gmail.com" className="text-sm font-mono text-neutral-400">
                 jayjayjomoc@gmail.com
               </a>

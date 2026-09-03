@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Left column */}
         <div className="flex flex-col items-center md:items-start space-y-1">
           <p className="text-xs text-neutral-500 font-mono">
-            &copy; {currentYear} Ronnel P. Jomoc Jr. All rights reserved.
+            &copy; {currentYear} Ronnel Jomoc Jr. All rights reserved.
           </p>
           
         </div>
@@ -17,7 +17,7 @@ export default function Footer() {
         {/* Right column */}
         <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-4 gap-y-2 text-xs text-neutral-500 font-mono">
           <a
-            href="#who"
+            href="#"
             className="hover:text-white transition-colors duration-300 hover-target"
           >
             TOP
@@ -31,7 +31,7 @@ export default function Footer() {
           </a>
           <span className="text-neutral-800">/</span>
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/ronnel.polsotin.jomoc"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors duration-300 hover-target"

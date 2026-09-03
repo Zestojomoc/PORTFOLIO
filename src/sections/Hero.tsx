@@ -2,9 +2,16 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Braces, Database, Server } from "lucide-react";
 import Button from "@/components/ui/Button";
 
 export default function Hero() {
+  const introductionTechnologies = [
+    { name: "Laravel", Icon: Braces },
+    { name: "Python", Icon: Server },
+    { name: "PostgreSQL", Icon: Database },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,7 +41,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[auto] md:min-h-screen w-full flex items-center justify-center pt-24 pb-10 md:pt-24 md:pb-16 overflow-hidden bg-black">
+    <section className="relative w-full flex items-center justify-center pt-24 pb-14 md:pt-28 md:pb-20 overflow-hidden bg-black">
       {/* Background Grid Lines aligned with content max-width */}
       <div className="absolute inset-0 z-0 pointer-events-none hidden md:block opacity-20 max-w-7xl 2xl:max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="relative w-full h-full">
@@ -53,26 +60,20 @@ export default function Hero() {
           className="lg:col-span-8 flex flex-col justify-center space-y-5 md:space-y-8 text-left order-1 lg:order-1"
         >
           <div className="space-y-3 md:space-y-4">
-            <motion.span
-              variants={itemVariants}
-              className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-neutral-500 font-mono"
-            >
-              Available for projects
-            </motion.span>
             <motion.h1
               variants={itemVariants}
-              className="text-[2.9rem] sm:text-6xl md:text-7xl xl:text-[5.5rem] font-display font-extrabold tracking-[-0.04em] md:tracking-tighter leading-[0.92] text-white"
+              className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-display font-extrabold tracking-[-0.04em] md:tracking-tighter leading-[0.96] text-white"
             >
-              <span className="block">Ronnel P.</span>
+              <span className="block">RONNEL</span>
               <span className="block text-stroke-white text-stroke-white-hover transition-colors duration-500">
-                Jomoc Jr.
+                JOMOC JR.
               </span>
             </motion.h1>
             <motion.h2
               variants={itemVariants}
               className="text-lg sm:text-lg md:text-2xl font-sans font-light tracking-wide text-neutral-300"
             >
-              Full Stack Web Developer
+              Junior Full-Stack Web Developer
             </motion.h2>
           </div>
 
@@ -80,8 +81,24 @@ export default function Hero() {
             variants={itemVariants}
             className="text-sm md:text-base text-neutral-400 max-w-xl font-light leading-relaxed"
           >
-            Building clean, responsive, and modern web experiences with a focus on simple design and reliable functionality.
+            I&apos;m a junior full-stack web developer based in the Philippines. I build clean, responsive, and easy-to-use web applications for people, businesses, and projects using Laravel, Python, and PostgreSQL.
           </motion.p>
+
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap gap-2"
+            aria-label="Core technologies"
+          >
+            {introductionTechnologies.map(({ name, Icon }) => (
+              <span
+                key={name}
+                className="inline-flex items-center gap-2 border border-neutral-800 bg-neutral-950 px-3 py-2 text-[10px] font-mono uppercase tracking-[0.16em] text-neutral-400"
+              >
+                <Icon size={14} aria-hidden="true" />
+                {name}
+              </span>
+            ))}
+          </motion.div>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-1 md:pt-2 w-full sm:w-auto">
             <Button variant="solid" onClick={() => scrollToSection("projects")} className="w-full sm:w-auto">

@@ -17,12 +17,28 @@ export default function Projects() {
       index: "01",
     },
     {
+      name: "2R2L",
+      type: "Motorcycle Community Website",
+      desc: "A motorcycle community website for 2R2L, bringing its story, riding spot, gallery, and contact details together in a bold, easy-to-navigate experience.",
+      image: "/2r2l-homepage.png",
+      link: "https://2r2l.vercel.app/",
+      index: "02",
+    },
+    {
+      name: "Mouse Checker",
+      type: "Browser Input Utility",
+      desc: "Test your mouse buttons, wheel, and movement in real time. A quiet little check for the hardware you use every day.",
+      image: "/mouse-checker.png",
+      link: "https://mouse-checker.vercel.app/",
+      index: "03",
+    },
+    {
       name: "CEMS",
       type: "College Event Management System",
       desc: "College Event Management System (CEMS), a web-based system designed to help schools manage college events in a faster, easier, and more organized way.",
       image: "/CEMSImaged.png",
       link: " https://github.com/Zestojomoc/CEMS-.git",
-      index: "02",
+      index: "04",
     },
     {
       name: "CLF",
@@ -30,7 +46,7 @@ export default function Projects() {
       desc: "A safe and reliable place for students to report found items, search for lost belongings, and reconnect with what matters most. Our platform helps the campus community work together to return lost items quickly, easily, and securely.",
       image: "/L&FImage.png",
       link: "https://github.com/Zestojomoc/LOST-AND-FOUND.git",
-      index: "03",
+      index: "05",
     },
   ];
 
@@ -44,17 +60,12 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="relative w-full py-20 md:py-32 bg-black border-t border-neutral-900 overflow-hidden">
-      {/* Decorative Index Label */}
-      <div className="absolute right-6 top-10 md:right-12 text-xs font-mono text-neutral-800 tracking-[0.4em] select-none hidden sm:block">
-        05 / WORK
-      </div>
-
+    <section id="projects" className="relative w-full py-20 md:py-28 bg-black border-t border-neutral-900 overflow-hidden">
       <div className="max-w-7xl 2xl:max-w-[1400px] w-full mx-auto px-6 md:px-12 relative">
         {/* Section Header */}
         <div className="mb-12 md:mb-20">
           <span className="text-xs uppercase tracking-[0.3em] text-neutral-500 font-mono mb-2 block">
-            Selected Creation
+            Selected Work
           </span>
           <h3 className="text-3xl md:text-4xl font-display font-bold tracking-tight text-white uppercase">
             PROJECTS
@@ -62,7 +73,7 @@ export default function Projects() {
         </div>
 
         {/* Projects List */}
-        <div className="space-y-20 md:space-y-48">
+        <div className="space-y-20 md:space-y-32">
           {projects.map((project, idx) => {
             const isEven = idx % 2 === 0;
             const normalizedLink = project.link.trim();
