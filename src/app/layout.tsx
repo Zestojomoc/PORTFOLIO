@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ronnel Jomoc Jr. | Junior Full-Stack Web Developer",
+  title: "Ronnel Jomoc Jr.",
   description:
     "Portfolio of Ronnel Jomoc Jr., a junior full-stack web developer based in the Philippines.",
   icons: {
