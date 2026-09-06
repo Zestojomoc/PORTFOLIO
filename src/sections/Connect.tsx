@@ -108,7 +108,7 @@ export default function Connect() {
             </div>
 
             <div className="pt-8 border-t border-neutral-900 hidden lg:block text-xs font-mono text-neutral-600">
-              {"// LOCATION: ANTIPOLO, PHILIPPINES • GMT+8"}
+              {"// LOCATION: ANTIPOLO CITY, RIZAL, PHILIPPINES • GMT+8"}
             </div>
           </div>
 
