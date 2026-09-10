@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Award, ArrowUpRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Award, ArrowUpRight, X, ZoomIn } from "lucide-react";
 
 type Certification = {
   title: string;
@@ -30,6 +31,17 @@ const certifications: Certification[] = [
 ];
 
 export default function Certifications() {
+  const [selectedCertificate, setSelectedCertificate] = useState<number | null>(null);
+
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedCertificate(null);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, []);
+
   return (
     <section id="certifications" className="relative w-full overflow-hidden border-t border-neutral-900 bg-[#050505] py-20 md:py-28">
       <div className="relative mx-auto w-full max-w-7xl px-6 md:px-12 2xl:max-w-[1400px]">
@@ -64,13 +76,23 @@ export default function Certifications() {
             >
               <div className="relative mb-6 flex aspect-[16/10] items-center justify-center overflow-hidden border border-neutral-800 bg-neutral-950 sm:mb-7">
                 {certification.image ? (
-                  <Image
-                    src={certification.image}
-                    alt={`${certification.title} certificate`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setSelectedCertificate(index)}
+                    className="group/image absolute inset-0 block cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                    aria-label={`Zoom ${certification.title} certificate`}
+                  >
+                    <Image
+                      src={certification.image}
+                      alt={`${certification.title} certificate`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025] group-hover/image:scale-[1.04]"
+                    />
+                    <span className="absolute bottom-3 right-3 grid h-8 w-8 place-items-center bg-black/70 text-white opacity-0 transition-opacity duration-300 group-hover/image:opacity-100">
+                      <ZoomIn size={16} aria-hidden="true" />
+                    </span>
+                  </button>
                 ) : (
                   <div className="flex flex-col items-center gap-3 text-center transition-transform duration-500 group-hover:scale-[1.025]">
                     <Award size={30} className="text-neutral-500" aria-hidden="true" />
@@ -115,6 +137,47 @@ export default function Certifications() {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedCertificate !== null && certifications[selectedCertificate].image && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-5 md:p-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedCertificate(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Certificate preview"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="relative h-[82vh] w-full max-w-6xl"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <Image
+                src={certifications[selectedCertificate].image!}
+                alt={`${certifications[selectedCertificate].title} certificate`}
+                fill
+                sizes="(max-width: 768px) 100vw, 1200px"
+                className="object-contain"
+                priority
+              />
+              <button
+                type="button"
+                onClick={() => setSelectedCertificate(null)}
+                className="absolute right-2 top-2 grid h-9 w-9 place-items-center text-white/80 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                aria-label="Close certificate preview"
+              >
+                <X size={20} aria-hidden="true" />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
