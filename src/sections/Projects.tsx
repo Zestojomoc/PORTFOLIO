@@ -33,12 +33,20 @@ export default function Projects() {
       index: "03",
     },
     {
+      name: "SNT SHM",
+      type: "Live Structural Monitoring Dashboard",
+      desc: "A live dashboard for observing structural vibration data and monitoring the structural health of the Science and Technology Building in real time.",
+      image: "/snt-shm-live.png",
+      link: "https://sntshm.vercel.app/",
+      index: "04",
+    },
+    {
       name: "CEMS",
       type: "College Event Management System",
       desc: "College Event Management System (CEMS), a web-based system designed to help schools manage college events in a faster, easier, and more organized way.",
       image: "/CEMSImaged.png",
       link: " https://github.com/Zestojomoc/CEMS-.git",
-      index: "04",
+      index: "05",
     },
     {
       name: "CLF",
@@ -46,7 +54,7 @@ export default function Projects() {
       desc: "A safe and reliable place for students to report found items, search for lost belongings, and reconnect with what matters most. Our platform helps the campus community work together to return lost items quickly, easily, and securely.",
       image: "/L&FImage.png",
       link: "https://github.com/Zestojomoc/LOST-AND-FOUND.git",
-      index: "05",
+      index: "06",
     },
   ];
 
