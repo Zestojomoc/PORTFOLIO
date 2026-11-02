@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  --font-sans: "Trebuchet MS", "Gill Sans", "Century Gothic", sans-serif;
-  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-display: var(--font-syne);
+  --font-sans: var(--font-outfit);
+  --font-mono: var(--font-mono);
   
 }
 
