@@ -45,7 +45,7 @@ export default function Projects() {
       type: "College Event Management System",
       desc: "College Event Management System (CEMS), a web-based system designed to help schools manage college events in a faster, easier, and more organized way.",
       image: "/CEMSImaged.png",
-      link: " https://github.com/Zestojomoc/CEMS-.git",
+      link: "https://urscems.vercel.app/",
       index: "05",
     },
     {
